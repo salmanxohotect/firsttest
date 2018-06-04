@@ -13,26 +13,3 @@ cache:
   bundler: true
 before_install:
 - bundle install
-- gem update --system
-- google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222
-  http://localhost &
-before_script:
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
-#- openssl aes-256-cbc -k $DEPLOY_KEY -in config/deploy_id_rsa_enc_travis -d -a -out config/deploy_id_rsa
-- sleep 3
-- RAILS_ENV=test bundle exec rails db:migrate
-- RAILS_ENV=test bundle exec rspec
-#- rubocop
-env:
-  global:
-  - secure: vzdASdddadaddsadsASDASDADdADASD/9bfVjPxEjHYIKCqGT67K4STVVl5HYxwheCJ9qaL1V/i/r+L8pzhTdYJNetBTiKl34UiU+kv1a4F6GkgvrjJiD5b7B6t77yuYvoigxqCAv3SHzZwDWcGSLg35Cu1sopPW+VTUy+CaUXvAzG3GD8EYOzTd2aDDG/+HNgl8tPPDWfsJtyEHfGxYuAgXTXmD8qSmKYpHbd4WwDN5XJGcmCTuUwWzQ9seSCMPi88G78W+pU6UWe3FikuKuUKF8NCxUUVhsrqARuBp3NrLIWcZbNLTKFsgzju3yfZmQvHTtdbsOYahW2MXfpz7y4eGChMoaiUfsql7RTxOlTGx0XHVdFe7rR6yum5SWyXGfrN0l6gUmq/Jb4iWJnWdfp4ndETtwwMVylL+9BBNf7Mg9agisq3XOvEC9jMNR74lDecHC3R54XqGiUVKSyF887+AwTMpkmA+lzR7mVr+kuWmtmD0kksZhtQ4a8wx75SsDZpiZeJHTN+wzZ2UVXfFQnzXXV/B4sfhwbwSDtfr+TACUVCxmOUW6oh9VQmKQWlJnTX6iNmGVtqc8QXfGs=
-deploy:
-- provider: script
-  script: rvm use $TRAVIS_RUBY_VERSION do bash _scripts/deploy.sh edge
-  on:
-    branch: develop
-- provider: script
-  script: rvm use $TRAVIS_RUBY_VERSION do bash _scripts/deploy.sh staging
-  on:
-    branch: master
