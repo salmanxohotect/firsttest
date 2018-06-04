@@ -3,8 +3,6 @@ dist: trusty
 language: ruby
 services:
 - pg
-jdk:
-- oraclejdk8
 rvm:
 - 2.4.1
 addons:
