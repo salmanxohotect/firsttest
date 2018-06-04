@@ -2,8 +2,7 @@ sudo: true
 dist: trusty
 language: ruby
 services:
-- redis-server
-- mysql
+- pg
 jdk:
 - oraclejdk8
 rvm:
